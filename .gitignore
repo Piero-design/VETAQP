@@ -1,15 +1,17 @@
-# Python / Django
+# ==== BACKEND ====
 backend/venv/
-__pycache__/
-*.pyc
-*.log
-*.sqlite3
-.env
+backend/__pycache__/
+backend/*.pyc
+backend/*.sqlite3
+backend/.env
+backend/static/
+backend/media/
 
-# Node / React (para el frontend)
+# ==== FRONTEND ====
 frontend/node_modules/
 frontend/dist/
 frontend/.env
 
-# Sistema
+# ==== SISTEMA ====
 .DS_Store
+*.log
