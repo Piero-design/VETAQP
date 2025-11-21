@@ -4,6 +4,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import Pets from "../pages/Pets";
+import Inventory from "../pages/Inventory";
+import Payments from "../pages/Payments";
 
 export default function AppRouter() {
   return (
@@ -13,6 +15,8 @@ export default function AppRouter() {
       <Route path="/citas" element={<div className="card p-6">Citas (MVP)</div>} />
       <Route path="/promos" element={<div className="card p-6">Promociones (MVP)</div>} />
       <Route path="/pets" element={<Pets />} />
+      <Route path="/inventory" element={<Inventory />} />
+      <Route path="/payments" element={<Payments />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
