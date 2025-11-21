@@ -6,6 +6,7 @@ import Profile from "../pages/Profile";
 import Pets from "../pages/Pets";
 import Inventory from "../pages/Inventory";
 import Payments from "../pages/Payments";
+import Memberships from "../pages/Memberships";
 
 export default function AppRouter() {
   return (
@@ -17,6 +18,7 @@ export default function AppRouter() {
       <Route path="/pets" element={<Pets />} />
       <Route path="/inventory" element={<Inventory />} />
       <Route path="/payments" element={<Payments />} />
+      <Route path="/memberships" element={<Memberships />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

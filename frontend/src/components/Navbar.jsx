@@ -41,6 +41,7 @@ export default function Navbar() {
           <Link className={link} to="/pets">Mascotas</Link>
           <Link className={link} to="/inventory">Inventario</Link>
           <Link className={link} to="/payments">Pagos</Link>
+          <Link className={link} to="/memberships">Membresías</Link>
         </nav>
         <div className="flex items-center gap-3">
           <Link to="/cart" className="btn-ghost !px-3">
