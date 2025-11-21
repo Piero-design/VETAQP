@@ -1,0 +1,51 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Django",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/manage.py",
+            "args": [
+                "runserver",
+                "--noreload"
+            ],
+            "django": true,
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}/backend"
+        },
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: Debug Logical Errors",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/debugging_examples/logical_errors.py",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: Debug Runtime Errors",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/debugging_examples/runtime_errors.py",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: Debug Integration Errors",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/debugging_examples/integration_errors.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}/backend"
+        }
+    ]
+}
