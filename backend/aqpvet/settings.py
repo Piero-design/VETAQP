@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     # Terceros
     'rest_framework',
     'corsheaders',
+    'channels',
 
     # Apps del proyecto
     'apps.users',
@@ -30,6 +31,11 @@ INSTALLED_APPS = [
     'apps.inventory',
     'apps.payments',
     'apps.memberships',
+    'apps.orders',
+    'apps.appointments',
+    'apps.notifications',
+    'apps.chat',
+    'apps.dashboard',
 ]
 
 # --------------------------------------------------
@@ -53,6 +59,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # --------------------------------------------------
 ROOT_URLCONF = 'aqpvet.urls'
 WSGI_APPLICATION = 'aqpvet.wsgi.application'
+ASGI_APPLICATION = 'aqpvet.asgi.application'
 
 TEMPLATES = [
     {
@@ -96,6 +103,20 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=3),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
+# --------------------------------------------------
+# CHANNELS (WebSocket)
+# --------------------------------------------------
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        # Para producción con Redis:
+        # 'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        # 'CONFIG': {
+        #     "hosts": [('127.0.0.1', 6379)],
+        # },
+    },
 }
 
 # --------------------------------------------------

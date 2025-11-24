@@ -36,12 +36,19 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <Link className={link} to="/">Inicio</Link>
           <Link className={link} to="/catalogo">Catálogo</Link>
-          <Link className={link} to="/citas">Citas</Link>
-          <Link className={link} to="/promos">Promos</Link>
+          <Link className={link} to="/appointments">Citas</Link>
+          <Link className={link} to="/chat">Chat</Link>
           <Link className={link} to="/pets">Mascotas</Link>
+          <Link className={link} to="/medical-history">Historial Médico</Link>
           <Link className={link} to="/inventory">Inventario</Link>
           <Link className={link} to="/payments">Pagos</Link>
           <Link className={link} to="/memberships">Membresías</Link>
+          <Link className={link} to="/orders">Pedidos</Link>
+          <Link className={link} to="/order-tracking">Seguimiento</Link>
+          <Link className={link} to="/notifications">Notificaciones</Link>
+          {user?.is_staff && (
+            <Link className={`${link} font-bold text-blue-600`} to="/dashboard">📊 Dashboard</Link>
+          )}
         </nav>
         <div className="flex items-center gap-3">
           <Link to="/cart" className="btn-ghost !px-3">
