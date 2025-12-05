@@ -1,7 +1,10 @@
 # ==== BACKEND ====
 backend/venv/
 backend/__pycache__/
-backend/*.pyc
+backend/**/*.pyc
+backend/**/__pycache__/
+**/__pycache__/
+**/*.pyc
 backend/*.sqlite3
 backend/.env
 backend/static/

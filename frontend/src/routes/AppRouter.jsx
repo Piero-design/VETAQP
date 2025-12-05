@@ -4,16 +4,16 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import Pets from "../pages/Pets";
-import Inventory from '../pages/Inventory';
-import Payments from '../pages/Payments';
-import Memberships from '../pages/Memberships';
-import Orders from '../pages/Orders';
-import Appointments from '../pages/Appointments';
-import Notifications from '../pages/Notifications';
-import Chat from '../pages/Chat';
-import MedicalHistory from '../pages/MedicalHistory';
-import OrderTracking from '../pages/OrderTracking';
-import Dashboard from '../pages/Dashboard';
+import Inventory from "../pages/Inventory";
+import Payments from "../pages/Payments";
+import Appointments from "../pages/Appointments";
+import Memberships from "../pages/Memberships";
+import Orders from "../pages/Orders";
+import Notifications from "../pages/Notifications";
+import Chat from "../pages/Chat";
+import MedicalHistory from "../pages/MedicalHistory";
+import OrderTracking from "../pages/OrderTracking";
+import Dashboard from "../pages/Dashboard";
 
 export default function AppRouter() {
   return (
