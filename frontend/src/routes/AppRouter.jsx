@@ -14,12 +14,18 @@ import Chat from '../pages/Chat';
 import MedicalHistory from '../pages/MedicalHistory';
 import OrderTracking from '../pages/OrderTracking';
 import Dashboard from '../pages/Dashboard';
+import Cart from '../components/Cart';
+import Checkout from '../pages/Checkout';
+import OrderConfirmation from '../pages/OrderConfirmation';
 
 export default function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/catalogo" element={<Home />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/order-confirmation/:id" element={<OrderConfirmation />} />
       <Route path="/citas" element={<Appointments />} />
       <Route path="/appointments" element={<Appointments />} />
       <Route path="/promos" element={<div className="card p-6">Promociones (MVP)</div>} />

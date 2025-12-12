@@ -20,10 +20,15 @@ export default function Register() {
   });
 
   const onSubmit = async (data) => {
-    await registerUser({ username: data.username, email: data.email, password: data.password });
-    toast.success("Cuenta creada. Inicia sesión.");
-    reset();
-    nav("/login");
+    try {
+      await registerUser({ username: data.username, email: data.email, password: data.password });
+      toast.success("Cuenta creada. Inicia sesión.");
+      reset();
+      nav("/login");
+    } catch (error) {
+      const errorMsg = error.response?.data?.username?.[0] || error.response?.data?.email?.[0] || error.response?.data?.detail || "Error en el registro";
+      toast.error(errorMsg);
+    }
   };
 
   return (
