@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Informe Final - Sistema AQPVET</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; line-height: 1.5; color: #222; margin: 24px; }
+    h1, h2, h3, h4 { color: #7a0c21; margin-top: 1.2em; margin-bottom: 0.4em; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 22px; }
+    h3 { font-size: 18px; }
+    h4 { font-size: 16px; }
+    ul { margin: 0.3em 0 0.8em 1.2em; }
+    li { margin: 0.15em 0; }
+    table { border-collapse: collapse; width: 100%; margin: 0.8em 0; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #f6f2f3; }
+    .tag { display: inline-block; padding: 2px 6px; border-radius: 4px; background: #efe7e9; color: #7a0c21; font-size: 12px; }
+    .kpi { font-weight: 600; }
+    .section-note { font-size: 13px; color: #555; }
+    .small { font-size: 13px; color: #555; }
+    .hero { background: #f9f7f7; border: 1px solid #e1d6d8; padding: 12px 16px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+
+<h1>Informe Final del Sistema AQPVET</h1>
+<p class="hero"><strong>Estado:</strong> 100% completo · 16/16 casos de uso · 74+ tests de integración pasando · Backend Django/DRF/Channels · Frontend React 19 + Vite + Tailwind · Auth JWT · Chat WebSocket · Dashboard analítico (6 endpoints).</p>
+
+<h2>1. Introducción</h2>
+<p>AQPVET es un sistema integral de gestión veterinaria que cubre catálogo y venta de productos, pedidos y pagos, agenda de citas, historial médico de mascotas, chat en tiempo real, notificaciones y un dashboard analítico para usuarios staff. El backend está construido con Django + Django REST Framework y Channels (WebSocket) con autenticación JWT; el frontend con React 19, Vite y Tailwind. En desarrollo usa SQLite y está preparado para PostgreSQL en producción.</p>
+
+<h2>2. Participantes en el proyecto</h2>
+<ul>
+  <li><strong>Product Owner:</strong> [Completar nombre]</li>
+  <li><strong>Tech Lead / Backend:</strong> [Completar nombre]</li>
+  <li><strong>Frontend Lead:</strong> [Completar nombre]</li>
+  <li><strong>QA / Testing:</strong> [Completar nombre]</li>
+  <li><strong>DevOps:</strong> [Completar nombre]</li>
+</ul>
+
+<h2>3. Descripción del sistema actual</h2>
+<ul>
+  <li><strong>Backend (Django/DRF/Channels, JWT):</strong> apps de users, pets, products, inventory, orders, payments, memberships, appointments, chat (WebSocket), notifications y dashboard (analytics).</li>
+  <li><strong>Frontend (React 19 + Vite + Tailwind):</strong> páginas Home, Login/Register, Profile, Pets, MedicalHistory, Appointments, Chat, Orders, OrderTracking, Payments, Memberships, Inventory, Notifications y Dashboard.</li>
+  <li><strong>API:</strong> 50+ endpoints REST y canal WebSocket para chat. 6 endpoints de analytics para dashboard (stats, ventas en el tiempo, productos populares, estadísticas de citas, actividad reciente, stock bajo).</li>
+  <li><strong>Autenticación y roles:</strong> JWT con access/refresh tokens; roles user, staff, admin; permisos staff requeridos para dashboard y gestión avanzada.</li>
+  <li><strong>Tests:</strong> 74+ tests de integración pasando (Chat 18, Historial médico 26, Delivery 18, Dashboard 12).</li>
+</ul>
+
+<h2>4. Objetivos del sistema</h2>
+<ul>
+  <li>Brindar una experiencia completa para clientes: compra de productos, gestión de mascotas, agenda y chat con veterinario.</li>
+  <li>Ofrecer a staff visibilidad operativa y analítica (ventas, stock, citas) mediante dashboard y alertas.</li>
+  <li>Garantizar seguridad básica con JWT y segregación de roles.</li>
+  <li>Asegurar mantenibilidad y calidad con pruebas de integración y arquitectura modular.</li>
+</ul>
+
+<h2>5. Catálogo de requisitos del sistema</h2>
+
+<h3>5.1 Requisitos de información</h3>
+<ul>
+  <li>Registro y consulta de usuarios, roles y perfiles.</li>
+  <li>Gestión de mascotas, historial médico y vacunas.</li>
+  <li>Catálogo de productos, stock e inventario.</li>
+  <li>Pedidos, ítems, estados de envío y pagos.</li>
+  <li>Agenda de citas y estados de atención.</li>
+  <li>Conversaciones y mensajes (chat) en tiempo real.</li>
+  <li>Notificaciones y alertas.</li>
+  <li>Métricas consolidadas: KPIs de pedidos, ingresos, usuarios, mascotas, stock bajo, citas, productos populares, ventas por período.</li>
+</ul>
+
+<h3>5.2 Requisitos funcionales</h3>
+<ul>
+  <li>RF1 Autenticación y roles con JWT (login, refresh, permisos).</li>
+  <li>RF2 Catálogo y búsqueda de productos; carrito y checkout.</li>
+  <li>RF3 Gestión de pedidos y tracking de envíos.</li>
+  <li>RF4 Pagos y estados de transacción.</li>
+  <li>RF5 Gestión de mascotas e historial médico/vacunas.</li>
+  <li>RF6 Agenda de citas (crear, consultar, actualizar estados).</li>
+  <li>RF7 Chat en tiempo real con veterinario (WebSocket).</li>
+  <li>RF8 Notificaciones en centro de alertas.</li>
+  <li>RF9 Dashboard staff con 6 endpoints: stats, ventas en el tiempo, productos populares, stats de citas, actividad reciente, stock bajo.</li>
+  <li>RF10 Gestión de inventario (stock, alertas de bajo stock).</li>
+  <li>RF11 Gestión de usuarios y permisos (staff/admin).</li>
+</ul>
+
+<h4>5.2.1 Diagramas de casos de uso</h4>
+<p class="section-note">[Adjuntar si se dispone; los 16 casos de uso están implementados.]</p>
+
+<h4>5.2.2 Definición de actores</h4>
+<ul>
+  <li><strong>Cliente (User):</strong> compra, agenda, chat, gestiona mascotas y pedidos.</li>
+  <li><strong>Staff/Admin:</strong> acceso a dashboard, gestión de inventario, pedidos, usuarios, citas.</li>
+  <li><strong>Sistema de pagos externo (si aplica):</strong> procesar transacciones.</li>
+</ul>
+
+<h4>5.2.3 Casos de uso del sistema (16/16)</h4>
+<ul>
+  <li>CU01 Registrarse/Login</li>
+  <li>CU02 Buscar productos</li>
+  <li>CU03 Carrito de compras</li>
+  <li>CU04 Pagar en línea</li>
+  <li>CU05 Reservar cita</li>
+  <li>CU06 Registrar mascota</li>
+  <li>CU07 Chat con veterinario (18 tests)</li>
+  <li>CU08 Historial de compras</li>
+  <li>CU09 Atender citas</li>
+  <li>CU10 Historial médico (26 tests)</li>
+  <li>CU11 Gestionar productos</li>
+  <li>CU12 Gestionar usuarios</li>
+  <li>CU13 Reportes y Dashboard (12 tests)</li>
+  <li>CU14 Actualizar stock</li>
+  <li>CU15 Delivery y seguimiento (18 tests)</li>
+  <li>CU16 Procesar pagos</li>
+</ul>
+
+<h3>5.3 Requisitos no funcionales</h3>
+<ul>
+  <li>RNF1 Seguridad: JWT, roles, permisos staff; CORS configurado.</li>
+  <li>RNF2 Disponibilidad: entorno dev en localhost; preparado para despliegue Docker/PostgreSQL.</li>
+  <li>RNF3 Rendimiento: uso de agregaciones y F-expressions; select_related/prefetch_related para evitar N+1.</li>
+  <li>RNF4 Mantenibilidad: 74+ tests de integración, modularidad por apps, documentación técnica.</li>
+  <li>RNF5 Usabilidad: frontend responsive, formularios claros, feedback de estados.</li>
+</ul>
+
+<h2>6. Matriz de rastreabilidad objetivos/requisitos</h2>
+<table>
+  <thead>
+    <tr><th>Objetivo</th><th>Requisitos asociados</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>O1 Experiencia integral cliente</td><td>RF2, RF3, RF4, RF5, RF6, RF7, RF8</td></tr>
+    <tr><td>O2 Visibilidad operativa staff</td><td>RF9, RF10, RF11</td></tr>
+    <tr><td>O3 Seguridad básica</td><td>RF1, RNF1</td></tr>
+    <tr><td>O4 Mantenibilidad y calidad</td><td>RNF3, RNF4 (suite de tests)</td></tr>
+  </tbody>
+</table>
+
+<h2>7. Glosario de términos</h2>
+<ul>
+  <li><strong>JWT:</strong> JSON Web Token para autenticación.</li>
+  <li><strong>Staff:</strong> usuario con permisos administrativos.</li>
+  <li><strong>KPI:</strong> métrica clave de desempeño (pedidos, ingresos, usuarios, stock).</li>
+  <li><strong>WebSocket:</strong> canal bidireccional en tiempo real (chat).</li>
+  <li><strong>Threshold de stock:</strong> umbral que dispara alerta de bajo inventario.</li>
+</ul>
+
+<h2>8. Conflictos pendientes de resolución</h2>
+<p>No se registran conflictos abiertos en la documentación actual. Si aparecen nuevos hallazgos, deberán documentarse aquí.</p>
+
+<h2>Apéndices (opcionales)</h2>
+<ul>
+  <li>Guía de inicio rápido (setup backend/frontend, credenciales admin).</li>
+  <li>Documentación técnica del Dashboard (6 endpoints de analytics, permisos staff).</li>
+  <li>Reporte de tests (74+ integración, 100% passing en módulos críticos).</li>
+  <li>Informe de debugging (incidencias recientes resueltas en Appointment y agregaciones).</li>
+</ul>
+
+<p class="small">Versión 1.0.0 · Última actualización: Enero 2025 · Proyecto listo para producción (Release Candidate).</p>
+
+</body>
+</html>

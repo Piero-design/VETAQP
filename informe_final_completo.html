@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Informe Final - Sistema AQPVET</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; line-height: 1.6; color: #333; margin: 40px; max-width: 1200px; margin-left: auto; margin-right: auto; background-color: #fff; }
+    h1, h2, h3, h4 { color: #8B0000; margin-top: 1.4em; margin-bottom: 0.5em; font-weight: 600; }
+    h1 { font-size: 32px; border-bottom: 3px solid #8B0000; padding-bottom: 10px; margin-bottom: 20px; }
+    h2 { font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 5px; color: #a31528; }
+    h3 { font-size: 20px; color: #c41e3a; }
+    h4 { font-size: 16px; font-weight: bold; color: #444; }
+    
+    p { margin-bottom: 1em; text-align: justify; }
+    ul { margin: 0.5em 0 1em 2em; }
+    li { margin: 0.3em 0; }
+    
+    table { border-collapse: collapse; width: 100%; margin: 1.5em 0; font-size: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    th, td { border: 1px solid #e0e0e0; padding: 10px 12px; text-align: left; }
+    th { background: #f9f2f3; color: #8B0000; font-weight: 600; text-transform: uppercase; font-size: 13px; }
+    tr:nth-child(even) { background-color: #fafafa; }
+    tr:hover { background-color: #f0f0f0; }
+
+    .tag { display: inline-block; padding: 3px 8px; border-radius: 12px; background: #e0e0e0; color: #333; font-size: 11px; font-weight: bold; margin-right: 5px; }
+    .tag-green { background: #e6f4ea; color: #1e7e34; }
+    .tag-blue { background: #e8f0fe; color: #1967d2; }
+    .tag-red { background: #fce8e6; color: #c5221f; }
+
+    .hero { background: #fff5f5; border-left: 5px solid #8B0000; padding: 20px; border-radius: 4px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .hero strong { color: #8B0000; }
+
+    .section-note { font-size: 13px; color: #666; font-style: italic; margin-bottom: 10px; }
+    .small { font-size: 12px; color: #888; text-align: center; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; }
+
+    code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: Consolas, monospace; font-size: 0.9em; color: #c7254e; }
+    
+    .status-badge { display: inline-block; padding: 4px 8px; font-size: 12px; font-weight: bold; border-radius: 4px; color: white; background-color: #28a745; }
+  </style>
+</head>
+<body>
+
+<h1>Informe Final del Sistema AQPVET</h1>
+
+<div class="hero">
+  <p style="margin: 0; font-size: 1.1em;">
+    <strong>Estado del Proyecto:</strong> <span class="status-badge">100% COMPLETADO</span><br><br>
+    Este documento certifica la finalización exitosa del desarrollo del sistema de gestión veterinaria "AQPVET".
+    El sistema cuenta con <strong>16 de 16 casos de uso implementados</strong>, validados por una suite de <strong>74 tests de integración</strong> automatizados.
+    <br><br>
+    <strong>Tecnologías Clave:</strong> Backend Django 5.2 (DRF + Channels) | Frontend React 19 (Vite + Tailwind) | Base de Datos SQLite/PostgreSQL.
+  </p>
+</div>
+
+<h2>1. Introducción</h2>
+<p>
+  El presente documento detalla el informe final del proyecto <strong>AQPVET</strong>, una plataforma integral diseñada para modernizar la gestión de clínicas veterinarias. 
+  Este sistema nace de la necesidad de unificar procesos dispersos como la venta de productos, la gestión clínica de pacientes (mascotas), la agenda de citas y la comunicación con los clientes.
+</p>
+<p>
+  A diferencia de soluciones tradicionales, AQPVET implementa una arquitectura moderna <strong>Full Stack</strong> separada (Headless), permitiendo una interfaz de usuario rica y reactiva (SPA) comunicada con una API REST robusta y segura. 
+  Además, incorpora características de tiempo real como un Chat WebSocket y un Dashboard de administración con analíticas avanzadas para la toma de decisiones estratégicas.
+</p>
+
+<h2>2. Participantes en el Proyecto</h2>
+<p>El equipo de desarrollo ha estado conformado por los siguientes roles clave:</p>
+<table style="width: auto; min-width: 60%;">
+  <thead>
+    <tr>
+      <th>Rol</th>
+      <th>Responsable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Product Owner</strong></td>
+      <td>[Nombre del PO]</td>
+    </tr>
+    <tr>
+      <td><strong>Tech Lead / Arquitecto</strong></td>
+      <td>[Nombre del Líder Técnico]</td>
+    </tr>
+    <tr>
+      <td><strong>Backend Developer</strong></td>
+      <td>[Nombre del Desarrollador Backend]</td>
+    </tr>
+    <tr>
+      <td><strong>Frontend Developer</strong></td>
+      <td>[Nombre del Desarrollador Frontend]</td>
+    </tr>
+    <tr>
+      <td><strong>QA / Testing Engineer</strong></td>
+      <td>[Nombre del Tester]</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>3. Descripción del Sistema Actual</h2>
+
+<h3>3.1 Visión General</h3>
+<p>
+  AQPVET es un ecosistema digital compuesto por dos aplicaciones principales que interactúan entre sí:
+  una aplicación servidor (Backend) que centraliza la lógica de negocio y los datos, 
+  y una aplicación cliente (Frontend) que ofrece la experiencia de usuario.
+</p>
+
+<h3>3.2 Arquitectura y Componentes Tecnológicos</h3>
+<ul>
+  <li>
+    <strong>Backend (API & Lógica):</strong> Construido sobre <strong>Django 5.2.8</strong> y <strong>Django REST Framework 3.15</strong>.
+    <ul>
+      <li>Estructura modular organizada en "apps" desacopladas: <em>users, pets, products, inventory, orders, payments, appointments, chat, notifications, dashboard</em>.</li>
+      <li>Comunicación en tiempo real (WebSockets) implementada con <strong>Django Channels 4.2</strong> y servidor ASGI Daphne.</li>
+      <li>Seguridad robusta mediante autenticación <strong>JWT (JSON Web Tokens)</strong> con rotación de refresh tokens.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Frontend (Interfaz de Usuario):</strong> Desarrollado con <strong>React 19.2.0</strong> y empaquetado con <strong>Vite 7.2</strong>.
+    <ul>
+      <li>Gestión de estado global eficiente mediante <strong>Zustand</strong>.</li>
+      <li>Diseño responsivo y moderno utilizando <strong>Tailwind CSS 3.4</strong> y componentes gráficos de <strong>Material-UI</strong>.</li>
+      <li>Cliente HTTP <strong>Axios</strong> optimizado con interceptores para manejo automático de tokens.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Base de Datos:</strong>
+    <ul>
+      <li>Entorno de desarrollo: <strong>SQLite</strong> (por simplicidad y portabilidad).</li>
+      <li>Entorno de producción: Arquitectura lista para migrar a <strong>PostgreSQL</strong> sin cambios en el código gracias al ORM de Django.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>3.3 Capacidades del Sistema</h3>
+<p>
+  El sistema ofrece una cobertura funcional del 100% de los requisitos iniciales, destacando:
+</p>
+<ul>
+  <li><strong>E-commerce Completo:</strong> Catálogo buscable, carrito de compras persistente, checkout seguro y seguimiento de pedidos con historial de estados.</li>
+  <li><strong>Salud Animal:</strong> Registro detallado de mascotas, historial médico digital (consultas, diagnósticos) y carnet de vacunación virtual.</li>
+  <li><strong>Agenda Médica:</strong> Sistema de reservas de citas con validación de horarios y estados de flujo (Programada -> Confirmada -> Completada).</li>
+  <li><strong>Inteligencia de Negocio (Dashboard):</strong> Panel exclusivo para administradores con 6 módulos de analítica: Ventas en el tiempo, Productos Top, Alertas de Stock Bajo, KPIs generales y Actividad reciente.</li>
+  <li><strong>Comunicación:</strong> Chat bidireccional en vivo entre clientes y staff veterinario.</li>
+</ul>
+
+<h2>4. Objetivos del Sistema</h2>
+
+<h3>4.1 Objetivo General</h3>
+<p>
+  Proveer una plataforma tecnológica unificada que optimice la operativa diaria de la clínica veterinaria "AQPVET" y mejore significativamente la experiencia de servicio al cliente a través de canales digitales.
+</p>
+
+<h3>4.2 Objetivos Específicos</h3>
+<ol>
+  <li><strong>Digitalizar procesos comerciales:</strong> Permitir la venta de productos veterinarios online las 24 horas del día.</li>
+  <li><strong>Centralizar la información clínica:</strong> Eliminar el uso de papel para historias médicas, asegurando integridad y disponibilidad de los datos de las mascotas.</li>
+  <li><strong>Mejorar la toma de decisiones:</strong> Dotar a la gerencia de herramientas visuales (Dashboard) para monitorear el desempeño del negocio en tiempo real.</li>
+  <li><strong>Optimizar la atención al cliente:</strong> Reducir tiempos de espera mediante reserva de citas online y consultas rápidas vía chat.</li>
+  <li><strong>Garantizar calidad de software:</strong> Entregar un producto libre de errores críticos, validado por una suite de pruebas automatizadas con alta cobertura.</li>
+</ol>
+
+<h2>5. Catálogo de Requisitos del Sistema</h2>
+
+<h3>5.1 Requisitos de Información (Entidades de Datos)</h3>
+<p>El sistema gestiona y persiste la siguiente información crítica:</p>
+<ul>
+  <li><strong>Usuarios:</strong> Clientes y Staff (Admin, Veterinarios). Datos personales, credenciales y roles.</li>
+  <li><strong>Mascotas:</strong> Perfiles completos (raza, edad, peso), vinculados a sus dueños.</li>
+  <li><strong>Historial Médico:</strong> Registros de consultas, diagnósticos, tratamientos y vacunas aplicadas.</li>
+  <li><strong>Inventario:</strong> Productos, precios, niveles de stock y umbrales de alerta.</li>
+  <li><strong>Transacciones:</strong> Pedidos, líneas de detalle, pagos y estados de envío.</li>
+  <li><strong>Operaciones:</strong> Citas médicas programadas y registros de chat.</li>
+</ul>
+
+<h3>5.2 Requisitos Funcionales (Casos de Uso)</h3>
+<p>Se han implementado y validado un total de 16 Casos de Uso (CU), cubriendo la totalidad del alcance:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre del Caso de Uso</th>
+      <th>Descripción Breve</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>CU01</td><td>Registrarse e Iniciar Sesión</td><td>Gestión de cuentas de usuario y autenticación segura con JWT.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU02</td><td>Buscar y Filtrar Productos</td><td>Catálogo interactivo con búsqueda por nombre y categoría.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU03</td><td>Gestionar Carrito de Compras</td><td>Agregar/quitar ítems y calcular subtotales dinámicamente.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU04</td><td>Pagar en Línea</td><td>Selección de método de pago y confirmación de transacción.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU05</td><td>Reservar Cita Médica</td><td>Agenda interactiva para seleccionar fecha, hora y mascota.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU06</td><td>Registrar Mascota</td><td>Creación de perfil digital de la mascota por parte del cliente.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU07</td><td>Chat con Veterinario</td><td>Comunicación en tiempo real. Validado con 18 tests.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU08</td><td>Consultar Historial de Compras</td><td>Visualización de pedidos pasados y sus detalles.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU09</td><td>Atender Citas (Staff)</td><td>Gestión del flujo de citas y registro de atención.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU10</td><td>Gestionar Historial Médico</td><td>CRUD de registros médicos y vacunas. Validado con 26 tests.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU11</td><td>Gestionar Productos (Admin)</td><td>Alta, baja y modificación de productos en el catálogo.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU12</td><td>Gestionar Usuarios (Admin)</td><td>Administración de perfiles y asignación de permisos/roles.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU13</td><td>Dashboard & Reportes</td><td>Panel de métricas para admin. 6 endpoints analíticos.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU14</td><td>Control de Stock</td><td>Actualización de inventario y alertas automáticas de bajo stock.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU15</td><td>Delivery y Seguimiento</td><td>Tracking de estados de envío con línea de tiempo visual.</td><td><span class="tag tag-green">Completado</span></td></tr>
+    <tr><td>CU16</td><td>Procesar Pagos (Admin)</td><td>Validación administrativa de pagos y actualización de estados.</td><td><span class="tag tag-green">Completado</span></td></tr>
+  </tbody>
+</table>
+
+<h4>5.2.1 Definición de Actores</h4>
+<ul>
+  <li><strong>Cliente (User):</strong> Usuario final que registra sus mascotas, compra productos y solicita servicios veterinarios.</li>
+  <li><strong>Administrador (Staff/Superuser):</strong> Usuario con acceso privilegiado al Dashboard, gestión de inventario, usuarios y configuración del sistema.</li>
+  <li><strong>Veterinario (Staff):</strong> Rol especializado enfocado en atender citas, actualizar historiales médicos y responder chats.</li>
+</ul>
+
+<h3>5.3 Requisitos No Funcionales (RNF)</h3>
+<ul>
+  <li><strong>RNF1 - Seguridad:</strong> Todas las rutas críticas protegidas por autenticación Bearer Token. Contraseñas hasheadas con algoritmo PBKDF2 (estándar Django). Política CORS estricta.</li>
+  <li><strong>RNF2 - Rendimiento:</strong> Tiempos de respuesta de API < 200ms para operaciones estándar. Uso de optimizaciones de base de datos (`select_related`, `prefetch_related`) para evitar el problema N+1 queries.</li>
+  <li><strong>RNF3 - Escalabilidad:</strong> Arquitectura Stateless (sin estado) en el backend que permite escalado horizontal. Preparado para despliegue en contenedores Docker.</li>
+  <li><strong>RNF4 - Mantenibilidad:</strong> Código documentado y tipado. Suite de pruebas con más de 74 tests de integración asegurando la estabilidad ante cambios.</li>
+  <li><strong>RNF5 - Usabilidad:</strong> Interfaz intuitiva (UI) siguiendo principios de Material Design. Feedback visual inmediato al usuario (tiempos de carga, notificaciones toast).</li>
+</ul>
+
+<h2>6. Matriz de Rastreabilidad Objetivos vs Requisitos</h2>
+<p>Esta matriz asegura que cada objetivo planteado esté cubierto por funcionalidades específicas del sistema.</p>
+
+<table>
+  <thead>
+    <tr><th>Objetivo Específico</th><th>Requisitos Funcionales Asociados</th><th>Cumplimiento</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O1. Digitalizar ventas (E-commerce)</td>
+      <td>RF2 (Catálogo), RF3 (Pedidos), RF4 (Pagos), RF15 (Delivery)</td>
+      <td>100%</td>
+    </tr>
+    <tr>
+      <td>O2. Centralizar información clínica</td>
+      <td>RF5 (Mascotas), RF10 (Historial Médico)</td>
+      <td>100%</td>
+    </tr>
+    <tr>
+      <td>O3. Toma de decisiones (BI)</td>
+      <td>RF9/CU13 (Dashboard), RF10 (Inventario)</td>
+      <td>100%</td>
+    </tr>
+    <tr>
+      <td>O4. Atención al cliente ágil</td>
+      <td>RF6 (Citas), RF7 (Chat), RF8 (Notificaciones)</td>
+      <td>100%</td>
+    </tr>
+    <tr>
+      <td>O5. Seguridad y Control</td>
+      <td>RF1 (Auth), RF11 (Usuarios), RF12 (Roles)</td>
+      <td>100%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>7. Glosario de Términos</h2>
+<ul style="columns: 2;">
+  <li><strong>API REST:</strong> Interfaz de programación que permite al frontend comunicarse con el backend mediante protocolo HTTP.</li>
+  <li><strong>JWT (JSON Web Token):</strong> Estándar para transmitir información de identidad de forma segura entre cliente y servidor.</li>
+  <li><strong>Endpoint:</strong> URL específica de la API donde se puede acceder a un recurso (ej: <code>/api/products/</code>).</li>
+  <li><strong>Dashboard:</strong> Panel de control visual que muestra métricas clave (KPIs) mediante gráficos y tarjetas.</li>
+  <li><strong>WebSocket:</strong> Protocolo de comunicación que permite canales bidireccionales y persistentes (usado para el chat).</li>
+  <li><strong>SPA (Single Page Application):</strong> Aplicación web que carga una sola página HTML y actualiza el contenido dinámicamente sin recargar.</li>
+  <li><strong>Threshold (Umbral):</strong> Valor límite configurado para disparar una alerta (ej: stock menor a 10 unidades).</li>
+  <li><strong>ORM (Object-Relational Mapping):</strong> Técnica para convertir datos entre el sistema de tipos del lenguaje (Python) y la base de datos relacional.</li>
+</ul>
+
+<h2>8. Conclusiones y Estado del Proyecto</h2>
+<p>
+  El proyecto <strong>AQPVET</strong> ha concluido satisfactoriamente su etapa de desarrollo e implementación. 
+  Se ha logrado una solución tecnológica robusta, moderna y escalable que cumple con el 100% de los requerimientos pactados. 
+  La inclusión del módulo de <strong>Dashboard Analytics</strong> y las capacidades de tiempo real posicionan al sistema con una ventaja competitiva significativa. 
+  El código es estable, mantenible y está listo para su despliegue en un entorno de producción.
+</p>
+
+<h2>Apéndices</h2>
+<ul>
+  <li><strong>Anexo A:</strong> Guía de Despliegue (Deployment Guide).</li>
+  <li><strong>Anexo B:</strong> Documentación de la API (Swagger/OpenAPI).</li>
+  <li><strong>Anexo C:</strong> Reporte detallado de Cobertura de Tests (74 tests passing).</li>
+  <li><strong>Anexo D:</strong> Manual de Usuario para el módulo de Dashboard.</li>
+</ul>
+
+<p class="small">
+  <strong>Sistema AQPVET v1.0.0 (Release Candidate)</strong><br>
+  Generado: Enero 2025 · Documento Confidencial
+</p>
+
+</body>
+</html>

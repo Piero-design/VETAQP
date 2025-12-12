@@ -143,7 +143,7 @@ PyJWT==2.10.1
 PyMySQL==1.1.1
 pyparsing==3.2.3
 pypdf==4.3.0
-pypiwin32==223
+pypiwin32==223; sys_platform == "win32"
 pypng==0.20220715.0
 PySocks==1.7.1
 python-bidi==0.4.2
@@ -151,8 +151,8 @@ python-dateutil==2.9.0.post0
 python-dotenv==1.1.1
 pyttsx3==2.90
 pytz==2025.2
-pywin32==306
-pywin32-ctypes==0.2.2
+pywin32==306; sys_platform == "win32"
+pywin32-ctypes==0.2.2; sys_platform == "win32"
 PyYAML==6.0.1
 pyzmq==27.0.0
 qrcode==7.4.2
@@ -173,7 +173,7 @@ sympy==1.14.0
 tensorboard==2.19.0
 tensorboard-data-server==0.7.2
 tensorflow==2.19.0
-tensorflow-io-gcs-filesystem==0.31.0
+tensorflow-io-gcs-filesystem==0.37.1
 termcolor==3.1.0
 tf_keras==2.19.0
 threadpoolctl==3.5.0
