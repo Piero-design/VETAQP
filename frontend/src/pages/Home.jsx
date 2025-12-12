@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { listProducts } from "../api/catalogService";
-import { useCart } from "../context/CartContext";  // ← para manejar el carrito
+import { useCart } from "../context/CartContext";  // carrito global
 
 export default function Home() {
   const [items, setItems] = useState([]);
   const [q, setQ] = useState("");
 
-  const { addToCart } = useCart(); // ← función global para agregar al carrito
+  const { addToCart } = useCart(); // funcion para agregar al carrito
 
   useEffect(() => {
     (async () => {
@@ -50,14 +50,14 @@ export default function Home() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.map((p) => (
           <div key={p.id} className="card p-4">
-            {/* Imagen desde URL */}
+            
+            {/* Imagen desde backend o URL */}
             <img
               className="w-full h-40 object-cover rounded-xl mb-3"
-              src={p.image_url || "https://placehold.co/600x400"}
+              src={p.image_url || p.image || "https://placehold.co/600x400"}
               alt={p.name}
             />
 
-            {/* Información */}
             <h3 className="font-semibold">{p.name}</h3>
             <p className="text-sm text-gray-500">{p.description}</p>
 
@@ -66,7 +66,7 @@ export default function Home() {
                 S/ {Number(p.price).toFixed(2)}
               </span>
 
-              {/* Botón agregar al carrito */}
+              {/* Botón → agregar al carrito */}
               <button
                 className="btn-primary"
                 onClick={() => addToCart(p)}
@@ -78,7 +78,9 @@ export default function Home() {
         ))}
 
         {filtered.length === 0 && (
-          <div className="text-sm text-gray-500">No hay productos (aún).</div>
+          <div className="text-sm text-gray-500">
+            No hay productos (aún).
+          </div>
         )}
       </div>
 
