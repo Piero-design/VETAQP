@@ -1,3 +1,5 @@
+// src/components/Navbar.jsx
+
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProfile } from "../api/userService";
@@ -9,6 +11,7 @@ export default function Navbar() {
   const nav = useNavigate();
   const loc = useLocation();
 
+  // CADA VEZ QUE CAMBIA LA RUTA, SE VERIFICA EL USUARIO
   useEffect(() => {
     (async () => {
       try {
@@ -26,46 +29,73 @@ export default function Navbar() {
     nav("/");
   };
 
-  const link = "hover:text-brand transition";
+  const link = "hover:text-brand transition whitespace-nowrap";
+
   return (
-    <header className="bg-white/90 backdrop-blur border-b">
-      <div className="max-w-7xl mx-auto h-16 px-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 text-xl font-bold text-brand">
+    <header className="bg-white/90 backdrop-blur border-b shadow-sm">
+      <div className="max-w-7xl mx-auto h-16 px-6 flex items-center justify-between">
+
+        {/* LOGO */}
+        <Link to="/" className="flex items-center gap-2 text-2xl font-bold text-brand mr-6">
           <PetsIcon /> AqpVet
         </Link>
-        <nav className="hidden md:flex items-center gap-6 text-sm">
+
+        {/* MENÚ */}
+        <nav className="hidden xl:flex items-center gap-8 text-sm font-medium text-gray-700">
           <Link className={link} to="/">Inicio</Link>
           <Link className={link} to="/catalogo">Catálogo</Link>
           <Link className={link} to="/appointments">Citas</Link>
           <Link className={link} to="/chat">Chat</Link>
+
+          <div className="w-px h-5 bg-gray-300"></div>
           <Link className={link} to="/pets">Mascotas</Link>
           <Link className={link} to="/medical-history">Historial Médico</Link>
+
+          <div className="w-px h-5 bg-gray-300"></div>
           <Link className={link} to="/inventory">Inventario</Link>
           <Link className={link} to="/payments">Pagos</Link>
           <Link className={link} to="/memberships">Membresías</Link>
+
+          <div className="w-px h-5 bg-gray-300"></div>
           <Link className={link} to="/orders">Pedidos</Link>
           <Link className={link} to="/order-tracking">Seguimiento</Link>
           <Link className={link} to="/notifications">Notificaciones</Link>
+
           {user?.is_staff && (
-            <Link className={`${link} font-bold text-blue-600`} to="/dashboard">📊 Dashboard</Link>
+            <Link className={`${link} text-blue-600 font-semibold`} to="/dashboard">
+              📊 Dashboard
+            </Link>
           )}
         </nav>
-        <div className="flex items-center gap-3">
+
+        {/* DERECHA */}
+        <div className="flex items-center gap-4">
+
+          {/* CARRITO */}
           <Link to="/cart" className="btn-ghost !px-3">
             <ShoppingCartCheckoutIcon fontSize="small" />
           </Link>
-          {user ? (
-            <>
-              <Link to="/profile" className="btn-ghost">{user.username}</Link>
-              <button onClick={logout} className="btn-primary">Salir</button>
-            </>
-          ) : (
+
+          {/* NO LOGUEADO */}
+          {!user && (
             <>
               <Link to="/login" className="btn-ghost">Ingresar</Link>
               <Link to="/register" className="btn-primary">Crear cuenta</Link>
             </>
           )}
+
+          {/* LOGUEADO */}
+          {user && (
+            <div className="flex items-center gap-3 whitespace-nowrap">
+              <span className="font-semibold text-gray-700">
+                Hola, {user.username}
+              </span>
+              <button onClick={logout} className="btn-primary">Salir</button>
+            </div>
+          )}
+
         </div>
+
       </div>
     </header>
   );
