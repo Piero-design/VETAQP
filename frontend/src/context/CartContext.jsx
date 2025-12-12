@@ -46,7 +46,10 @@ export function CartProvider({ children }) {
 
   const totalItems = cart.reduce((acc, it) => acc + it.quantity, 0);
   const totalPrice = cart.reduce(
-    (acc, it) => acc + it.quantity * Number(it.price),
+    (acc, it) => {
+      const price = it.final_price ? Number(it.final_price) : Number(it.price);
+      return acc + it.quantity * price;
+    },
     0
   );
 

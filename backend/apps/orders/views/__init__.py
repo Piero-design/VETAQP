@@ -37,7 +37,7 @@ class OrderDetailView(generics.RetrieveUpdateAPIView):
         return Order.objects.filter(user=self.request.user).prefetch_related('items__product')
     
     def update(self, request, *args, **kwargs):
-        """Solo permite actualizar el status"""
+        """Solo admin puede actualizar el status"""
         instance = self.get_object()
         
         # Solo admin puede cambiar status

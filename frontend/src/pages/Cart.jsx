@@ -1,6 +1,8 @@
 import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
+  const navigate = useNavigate();
   const {
     cart,
     addToCart,
@@ -38,10 +40,10 @@ export default function Cart() {
                       className="btn-ghost !px-3"
                       onClick={() => decreaseItem(item.id)}
                     >
-                      -
+                      −
                     </button>
 
-                    <span className="font-bold">{item.quantity}</span>
+                    <span className="font-bold w-6 text-center">{item.quantity}</span>
 
                     <button
                       className="btn-ghost !px-3"
@@ -77,7 +79,10 @@ export default function Cart() {
               Total a pagar: S/ {totalPrice.toFixed(2)}
             </p>
 
-            <button className="btn-primary w-full mt-3">
+            <button 
+              className="btn-primary w-full mt-3"
+              onClick={() => navigate("/checkout")}
+            >
               Proceder al pago
             </button>
 
